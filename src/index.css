@@ -1,0 +1,53 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  background-color:rgb(5, 17, 35) ;
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main{
+  background: rgb(250, 245, 237);
+  height: min(80vh,500px);
+  width: min(80vw,600px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+.Die button{
+  background-color: rgb(255, 255, 255);
+  width: min(5vw,50px);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 5px;
+  box-shadow: 1px 2px 0.2px 0.2px rgb(133, 131, 131);
+  font-size: 1.5rem;
+  font-weight: bolder;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+}
+.container{
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  gap: min(2vw,20px);
+}
+.RollButton{
+  background-color: rgb(63, 224, 51);
+  padding: 10px;
+  font-size: 1.4rem;
+  border-radius: 10px;
+  border: none;
+  margin-top: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
