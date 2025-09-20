@@ -1,19 +1,20 @@
 import { useState } from "react"
+import { nanoid } from "nanoid"
 import Die from "./compnonents/Die"
 export default function App(){
-  const [values,setValues]=useState(RandomNum())
   function RandomNum(){
     const DieValue = []
     for(let i=0;i<10;i++){
-    const randomValues = Math.ceil(Math.random()*6)
-    DieValue.push(randomValues)
-  }
+      const randomValues = {value: Math.ceil(Math.random()*6),isClicked :false,id:nanoid()}
+      DieValue.push(randomValues)
+    }
     return DieValue}
+    const [values,setValues]=useState(RandomNum())
   function RollDie(){
     setValues(RandomNum())
   }
-  const AssignValues = values.map((value,index)=>
-    <Die key={index} val = {value}/>
+  const AssignValues = values.map((dice)=>
+    <Die key={dice.id} val = {dice.value} isClicked = {dice.isClicked}/>
   )
   return(
     <main>

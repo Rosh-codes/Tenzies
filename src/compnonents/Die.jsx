@@ -2,7 +2,7 @@
 export default function Die(props){
     return(
         <div className="Die">
-            <button>{props.val}</button>
+            <button style={{backgroundColor : props.isClicked ? "green" : null }}>{props.val}</button>
         </div>
     )
 }
