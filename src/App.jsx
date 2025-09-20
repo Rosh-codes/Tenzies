@@ -5,7 +5,7 @@ export default function App(){
   function RandomNum(){
     const DieValue = []
     for(let i=0;i<10;i++){
-      const randomValues = {value: Math.ceil(Math.random()*6),isClicked :false,id:nanoid()}
+      const randomValues = {value: Math.ceil(Math.random()*6),isHeld :false,id:nanoid()}
       DieValue.push(randomValues)
     }
     return DieValue}
@@ -13,8 +13,14 @@ export default function App(){
   function RollDie(){
     setValues(RandomNum())
   }
+  function hold(id){
+    setValues(prevValues=>
+      prevValues.map(die=> die.id === id? 
+        {...die,isHeld:!die.isHeld}:die)
+      )
+  }
   const AssignValues = values.map((dice)=>
-    <Die key={dice.id} val = {dice.value} isClicked = {dice.isClicked}/>
+    <Die key={dice.id} val = {dice.value} isHeld = {dice.isHeld} hold = {hold} id={dice.id}/>
   )
   return(
     <main>

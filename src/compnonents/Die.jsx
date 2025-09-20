@@ -2,7 +2,7 @@
 export default function Die(props){
     return(
         <div className="Die">
-            <button style={{backgroundColor : props.isClicked ? "green" : null }}>{props.val}</button>
+            <button onClick={()=>props.hold(props.id)} style={{backgroundColor : props.isHeld ? "green" : null }}>{props.val}</button>
         </div>
     )
 }
