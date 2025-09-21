@@ -11,7 +11,7 @@ export default function App(){
     return DieValue}
     const [values,setValues]=useState(RandomNum())
   function RollDie(){
-    setValues(RandomNum())
+    setValues(prevValues=>prevValues.map(dice=>dice.isHeld ? dice : {...dice,value: Math.ceil(Math.random()*6)}))
   }
   function hold(id){
     setValues(prevValues=>
@@ -24,6 +24,11 @@ export default function App(){
   )
   return(
     <main>
+      <h1 className="title">Tenzies</h1>
+      <p className="instructions">
+        Roll until all dice show the same number. Click each die to hold its value between rolls.
+      </p>
+
       <div className="container">
         {AssignValues}
       </div>
