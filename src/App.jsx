@@ -2,6 +2,9 @@ import { useState } from "react"
 import { nanoid } from "nanoid"
 import Die from "./compnonents/Die"
 export default function App(){
+  const [values,setValues]=useState(RandomNum())
+  const WinCondition = values.every(dice=>dice.isHeld)
+    && values.every(dice=>dice.value === values[0].value)
   function RandomNum(){
     const DieValue = []
     for(let i=0;i<10;i++){
@@ -9,7 +12,6 @@ export default function App(){
       DieValue.push(randomValues)
     }
     return DieValue}
-    const [values,setValues]=useState(RandomNum())
   function RollDie(){
     setValues(prevValues=>prevValues.map(dice=>dice.isHeld ? dice : {...dice,value: Math.ceil(Math.random()*6)}))
   }
@@ -32,7 +34,7 @@ export default function App(){
       <div className="container">
         {AssignValues}
       </div>
-      <button className="RollButton" onClick={RollDie}>Roll Dice</button>
+      <button style={{backgroundColor : WinCondition ? "#2ecc71" : null}} className="RollButton" onClick={RollDie}>{ WinCondition ? "Game Won":"Roll Dice"} </button>
     </main>
   )
 }
